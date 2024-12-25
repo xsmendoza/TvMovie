@@ -4,7 +4,7 @@
 
 ## About:
 
-**TV-Movie is a simple and responsive web app 🎥 built using `HTML, CSS and Javascript`, leveraging the power of `Postman` and the `TMDB API` to seamlessly fetch and display comprehensive movie details. This project serves as a template for larger applications.**
+**NaughtyX-Movie is a simple and responsive web app 🎥 built using `HTML, CSS and Javascript`, leveraging the power of `Postman` and the `TMDB API` to seamlessly fetch and display comprehensive movie details. This project serves as a template for larger applications.**
 
 ## Technologies Used 🛠️
 
