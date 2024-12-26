@@ -22,7 +22,10 @@ Store MovieId in Local Storage when I click any movie card
   window.localStorage.setItem("movieId", String(movieId));
 }; */
 // index 
-const getMovieDetail = function (movieId, movieTitle) {
+const getMovieDetail = function (event, movieId, movieTitle) {
+  // Evitar que el enlace navegue automáticamente
+  event.preventDefault();
+
   // Guardar el ID de la película en localStorage
   window.localStorage.setItem("movieId", String(movieId));
 
@@ -30,10 +33,10 @@ const getMovieDetail = function (movieId, movieTitle) {
   let formattedTitle = movieTitle.toLowerCase().replace(/\s+/g, '-');
 
   // Actualizar la URL en la barra de direcciones sin recargar la página
-  window.history.pushState({}, '', `detail.html?=${formattedTitle}`);
+  window.history.pushState({}, '', `detail.html?title=${formattedTitle}`);
 
   // Opción adicional: Si quieres redirigir a la página de detalles con el título en la URL:
-  // window.location.href = `detail.html?=${formattedTitle}`;
+  // window.location.href = `detail.html?title=${formattedTitle}`;
 };
 // finish 
 
