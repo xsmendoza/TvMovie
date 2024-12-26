@@ -57,21 +57,6 @@
 
   <!--- redireccion con id=&292 -->
   <script>
-document.querySelectorAll('.card-btn').forEach(button => {
-  button.addEventListener('click', function() {
-    // Obtener el título de la película desde el texto o un atributo de la película relacionada con el botón
-    let movieTitle = button.closest('.movie-card').querySelector('.movie-title').textContent.trim();
-
-    // Asegurarse de que el título sea un formato válido para la URL (por ejemplo, convertir espacios a guiones bajos)
-    let formattedTitle = movieTitle.toLowerCase().replace(/\s+/g, '-');
-
-    // Actualizar la URL con el nombre de la película en el formato deseado
-    window.history.pushState({}, '', `detail.html?=${formattedTitle}`);
-
-    // Redirigir a la página de detalles con el nombre de la película en la URL
-    window.location.href = `detail.html?=${formattedTitle}`;
-  });
-});
   </script>
 </body>
 </html>
