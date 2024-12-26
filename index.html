@@ -57,23 +57,20 @@
 
   <!--- redireccion con id=&292 -->
   <script>
- // Esta función cambia la URL para mostrar el título de la película en el enlace
-function cambiarURLConTitulo(peliculaTitulo) {
-    // Reemplazamos los espacios por guiones y convertimos a minúsculas para que sea un formato válido para URL
-    const tituloEnlace = peliculaTitulo.replace(/\s+/g, '-').toLowerCase();
-    
-    // Cambiamos la URL sin recargar la página
-    history.pushState(null, '', `detail.html?=${tituloEnlace}`);
-}
+document.querySelectorAll('.card-btn').forEach(button => {
+  button.addEventListener('click', function() {
+    // Obtener el título de la película desde el texto o un atributo de la película relacionada con el botón
+    let movieTitle = button.closest('.movie-card').querySelector('.movie-title').textContent.trim();
 
-// Esta función podría llamarse cuando un usuario haga clic en una película
-document.querySelectorAll('.pelicula').forEach((peliculaElemento) => {
-    peliculaElemento.addEventListener('click', () => {
-        const peliculaTitulo = peliculaElemento.getAttribute('data-titulo');
-        
-        // Llamamos a la función para cambiar la URL con el título de la película
-        cambiarURLConTitulo(peliculaTitulo);
-    });
+    // Asegurarse de que el título sea un formato válido para la URL (por ejemplo, convertir espacios a guiones bajos)
+    let formattedTitle = movieTitle.toLowerCase().replace(/\s+/g, '-');
+
+    // Actualizar la URL con el nombre de la película en el formato deseado
+    window.history.pushState({}, '', `detail.html?=${formattedTitle}`);
+
+    // Redirigir a la página de detalles con el nombre de la película en la URL
+    window.location.href = `detail.html?=${formattedTitle}`;
+  });
 });
   </script>
 </body>
