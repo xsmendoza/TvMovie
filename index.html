@@ -59,15 +59,16 @@
   <script>
   "use strict";
 
-// Aquí obtienes las tarjetas de películas por sus clases y les añades la URL con el ID de la película
+// Obtener todas las tarjetas de película usando la clase .movie-card
 const movieCards = document.querySelectorAll(".movie-card");
 
 movieCards.forEach(card => {
-  const movieId = card.querySelector(".card-btn").getAttribute("data-movie-id"); // Asegúrate de que el ID esté en el atributo 'data-movie-id' del botón
+  // Buscar el enlace dentro de la tarjeta de la película y agregar el nombre de la película a la URL
+  const movieId = card.querySelector(".card-btn").getAttribute("title").toLowerCase().replace(/ /g, "-"); // Usamos el título de la película para formar la URL
 
-  // Cambiar el enlace para que use el ID de la película en la URL
+  // Generar el enlace dinámico para la película
   const link = card.querySelector(".card-btn");
-  link.setAttribute("href", `./detail.html?id=${movieId}`);
+  link.setAttribute("href", `./detail.html?movie=${movieId}`);
 });
   </script>
 </body>
