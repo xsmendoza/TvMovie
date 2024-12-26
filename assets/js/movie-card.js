@@ -41,7 +41,7 @@ export function createMovieCard(movie) {
       <div class="card-badge">${release_date.split("-")[0]}</div>
     </div>
 
-    <a href="./detail.html" class="card-btn" title="${title}"></a>
+    <a href="./detail.html?=${formattedTitle}"  class="card-btn" title="${title}"></a>
   `;
 
   return card;
