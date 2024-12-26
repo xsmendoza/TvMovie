@@ -57,26 +57,18 @@
 
   <!--- redireccion con id=&292 -->
   <script>
-    // Seleccionar el contenedor donde se mostrarán las películas
-const movieListDiv = document.getElementById('movie-list');
-const API_KEY = '694ca23f12d42b9db18d614d3ffd3496';
-const API_URL = `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}`;
+  "use strict";
 
-// Obtener lista de películas de la API de TMDB
-fetch(API_URL)
-  .then(response => response.json())
-  .then(data => {
-    const movies = data.results;
-    movies.forEach(movie => {
-      // Crear un enlace dinámico con el ID de la película en la URL
-      const movieElement = document.createElement('a');
-      movieElement.href = `detail.html?id=${movie.id}`; // Agrega el ID en la URL
-      movieElement.textContent = movie.title; // Mostrar el título de la película
-      movieElement.style.display = 'block'; // Asegura que cada película esté en una línea
-      movieListDiv.appendChild(movieElement); // Agrega el enlace al contenedor
-    });
-  })
-  .catch(error => console.error('Error al cargar las películas:', error));
+// Aquí obtienes las tarjetas de películas por sus clases y les añades la URL con el ID de la película
+const movieCards = document.querySelectorAll(".movie-card");
+
+movieCards.forEach(card => {
+  const movieId = card.querySelector(".card-btn").getAttribute("data-movie-id"); // Asegúrate de que el ID esté en el atributo 'data-movie-id' del botón
+
+  // Cambiar el enlace para que use el ID de la película en la URL
+  const link = card.querySelector(".card-btn");
+  link.setAttribute("href", `./detail.html?id=${movieId}`);
+});
   </script>
 </body>
 </html>
