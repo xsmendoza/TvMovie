@@ -57,18 +57,23 @@
 
   <!--- redireccion con id=&292 -->
   <script>
-  "use strict";
+ // Esta función cambia la URL para mostrar el título de la película en el enlace
+function cambiarURLConTitulo(peliculaTitulo) {
+    // Reemplazamos los espacios por guiones y convertimos a minúsculas para que sea un formato válido para URL
+    const tituloEnlace = peliculaTitulo.replace(/\s+/g, '-').toLowerCase();
+    
+    // Cambiamos la URL sin recargar la página
+    history.pushState(null, '', `detail.html?=${tituloEnlace}`);
+}
 
-// Obtener todas las tarjetas de película usando la clase .movie-card
-const movieCards = document.querySelectorAll(".movie-card");
-
-movieCards.forEach(card => {
-  // Buscar el enlace dentro de la tarjeta de la película y agregar el nombre de la película a la URL
-  const movieId = card.querySelector(".card-btn").getAttribute("title").toLowerCase().replace(/ /g, "-"); // Usamos el título de la película para formar la URL
-
-  // Generar el enlace dinámico para la película
-  const link = card.querySelector(".card-btn");
-  link.setAttribute("href", `detail.html?movie=${movieId}`);
+// Esta función podría llamarse cuando un usuario haga clic en una película
+document.querySelectorAll('.pelicula').forEach((peliculaElemento) => {
+    peliculaElemento.addEventListener('click', () => {
+        const peliculaTitulo = peliculaElemento.getAttribute('data-titulo');
+        
+        // Llamamos a la función para cambiar la URL con el título de la película
+        cambiarURLConTitulo(peliculaTitulo);
+    });
 });
   </script>
 </body>
